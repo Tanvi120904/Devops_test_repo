@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Surprise for You!</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background: #fff0f5;
+      margin: 0;
+      font-family: 'Comic Sans MS', cursive;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+    }
+
+    .wrapper {
+      text-align: center;
+    }
+
+    h1 {
+      color: #ff1493;
+      font-size: 2em;
+      margin-bottom: 20px;
+      
+    }
+
+    .cake-container {
+      position: relative;
+      width: 200px;
+      height: 200px;
+      margin: 0 auto;
+      cursor: pointer;
+    }
+
+    .cake-top, .cake-bottom, .sister-face {
+      position: absolute;
+      width: 100%;
+      transition: all 1s ease-in-out;
+      border-radius: 20px;
+      left: 0;
+    }
+
+    .cake-top {
+      top: 0;
+      z-index: 3;
+    }
+
+    .cake-bottom {
+      bottom: 0;
+      z-index: 2;
+    }
+
+    .sister-face {
+      top: 0;
+      opacity: 0;
+      z-index: 1;
+      transform: scale(0.9);
+      border-radius: 20px;
+    }
+
+    .open .cake-top {
+      transform: translateY(-120px) rotate(-5deg);
+      opacity: 0;
+    }
+
+    .open .cake-bottom {
+      transform: translateY(120px) rotate(5deg);
+      opacity: 0;
+    }
+
+    .open .sister-face {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    .message {
+      margin-top: 45px;
+      color: #c71585;
+      font-size: 1.2em;
+      min-height: 1.2em;
+    }
+
+    .birthday-text {
+      margin-top: 20px;
+      color: #ff1493;
+      font-size: 1.5em;
+      font-weight: bold;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .show {
+      opacity: 1;
+    }
+
+    h1.hidden {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <h1>Click the Cake 🎂</h1>
+
+    <div class="cake-container" onclick="openCake()">
+      <img src="/images/cake_top.jpg" class="cake-top" alt="Cake Top">
+      <img src="/images/cake_bottom.jpg" class="cake-bottom" alt="Cake Bottom">
+      <img src="/images/hellokitty.jpeg" class="sister-face" alt="Sister's Face">
+    </div>
+
+    <div class="message" id="msg"></div>
+    <div class="birthday-text" id="bdayText">Happy Birthday 🎉🎀 </div>
+  </div>
+
+<script>
+  function openCake() {
+    const container = document.querySelector('.cake-container');
+    const msg = document.getElementById('msg');
+    const bdayText = document.getElementById('bdayText');
+    const heading = document.querySelector('h1'); 
+
+    
+    container.classList.add('open');
+    msg.textContent = "Heyyyyy Cutieeeeee 💖";
+    bdayText.classList.add("show");
+
+    // New: Hide the h1
+    heading.classList.add('hidden');
+  }
+</script>
+
+</body>
+</html>
